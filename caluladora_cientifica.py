@@ -4,46 +4,45 @@ from flet import colors
 from decimal import Decimal
 #Definir botoes
 botoes = [
-    {'operador':'tan','font':'#ffffff','fundo':'#575a5e','largura':'50','altura':'50'},
-    {'operador': 'sin', 'font': '#ffffff', 'fundo': '#575a5e','largura':'50','altura':'50'},
-    {'operador': 'cos', 'font': '#ffffff', 'fundo': '#575a5e','largura':'50','altura':'50'},
-    {'operador': 'sqrt', 'font': '#ffffff', 'fundo': '#575a5e','largura':'50','altura':'50'},
-    {'operador': 'log', 'font': '#ffffff', 'fundo': '#575a5e','largura':'50','altura':'50'},
-    {'operador': 'log10', 'font': '#ffffff', 'fundo': '#575a5e','largura':'50','altura':'50'},
-    {'operador': 'e', 'font': '#ffffff', 'fundo': '#575a5e','largura':'50','altura':'50'},
-    {'operador': 'pow', 'font': '#ffffff', 'fundo': '#575a5e','largura':'50','altura':'50'},
-    {'operador': 'rad', 'font': '#ffffff', 'fundo': '#575a5e','largura':'50','altura':'50'},
-    {'operador': 'pi', 'font': '#ffffff', 'fundo': '#575a5e','largura':'50','altura':'50'},
-    {'operador': '(', 'font': '#ffffff', 'fundo': '#575a5e','largura':'50','altura':'50'},
-    {'operador': ')', 'font': '#ffffff', 'fundo': '#575a5e','largura':'50','altura':'50'},
+    {'operador':'tan','font':'#ffffff','fundo':'#575a5e','largura':60,'altura':50},
+    {'operador': 'sin', 'font': '#ffffff', 'fundo': '#575a5e','largura':60,'altura':50},
+    {'operador': 'cos', 'font': '#ffffff', 'fundo': '#575a5e','largura':60,'altura':50},
+    {'operador': 'sqrt', 'font': '#ffffff', 'fundo': '#575a5e','largura':60,'altura':50},
+    {'operador': 'log', 'font': '#ffffff', 'fundo': '#575a5e','largura':60,'altura':50},
+    {'operador': 'log10', 'font': '#ffffff', 'fundo': '#575a5e','largura':60,'altura':50},
+    {'operador': 'e', 'font': '#ffffff', 'fundo': '#575a5e','largura':60,'altura':50},
+    {'operador': 'pow', 'font': '#ffffff', 'fundo': '#575a5e','largura':60,'altura':50},
+    {'operador': 'rad', 'font': '#ffffff', 'fundo': '#575a5e','largura':60,'altura':50},
+    {'operador': 'pi', 'font': '#ffffff', 'fundo': '#575a5e','largura':60,'altura':50},
+    {'operador': '(', 'font': '#ffffff', 'fundo': '#575a5e','largura':60,'altura':50},
+    {'operador': ')', 'font': '#ffffff', 'fundo': '#575a5e','largura':60,'altura':50},
 
-    {'operador': 'AC ', 'font': '#000000', 'fundo': '#f9d12c','largura':'111','altura':'50'},
-    {'operador': '% ', 'font': '#000000', 'fundo': '#f9d12c','largura':'50','altura':'50'},
-    {'operador': '/ ', 'font': '#000000', 'fundo': '#f9d12c','largura':'50','altura':'50'},
+    {'operador': 'AC ', 'font': '#000000', 'fundo': '#f9d12c','largura':131,'altura':50},
+    {'operador': '% ', 'font': '#000000', 'fundo': '#f9d12c','largura':60,'altura':50},
+    {'operador': '/ ', 'font': '#000000', 'fundo': '#f9d12c','largura':60,'altura':50},
 
-    {'operador': '7', 'font': '#f9d12c', 'fundo': '#000000','largura':'50','altura':'50'},
-    {'operador': '8', 'font': '#f9d12c', 'fundo': '#000000','largura':'50','altura':'50'},
-    {'operador': '9', 'font': '#f9d12c', 'fundo': '#000000','largura':'50','altura':'50'},
+    {'operador': '7', 'font': '#f9d12c', 'fundo': '#000000','largura':60,'altura':50},
+    {'operador': '8', 'font': '#f9d12c', 'fundo': '#000000','largura':60,'altura':50},
+    {'operador': '9', 'font': '#f9d12c', 'fundo': '#000000','largura':60,'altura':50},
 
-    {'operador': '* ', 'font': '#000000', 'fundo': '#f9d12c', 'largura': '50', 'altura': '50'},
+    {'operador': '* ', 'font': '#000000', 'fundo': '#f9d12c', 'largura': 60, 'altura': 50},
 
-    {'operador': '4', 'font': '#f9d12c', 'fundo': '#000000','largura':'50','altura':'50'},
-    {'operador': '5', 'font': '#f9d12c', 'fundo': '#000000','largura':'50','altura':'50'},
-    {'operador': '6', 'font': '#f9d12c', 'fundo': '#000000','largura':'50','altura':'50'},
+    {'operador': '4', 'font': '#f9d12c', 'fundo': '#000000','largura':60,'altura':50},
+    {'operador': '5', 'font': '#f9d12c', 'fundo': '#000000','largura':60,'altura':50},
+    {'operador': '6', 'font': '#f9d12c', 'fundo': '#000000','largura':60,'altura':50},
 
-    {'operador': '- ', 'font': '#000000', 'fundo': '#f9d12c', 'largura': '50', 'altura': '50'},
+    {'operador': '- ', 'font': '#000000', 'fundo': '#f9d12c', 'largura': 60, 'altura': 50},
 
-    {'operador': '1', 'font': '#f9d12c', 'fundo': '#000000','largura':'50','altura':'50'},
-    {'operador': '2', 'font': '#f9d12c', 'fundo': '#000000','largura':'50','altura':'50'},
-    {'operador': '3', 'font': '#f9d12c', 'fundo': '#000000','largura':'50','altura':'50'},
+    {'operador': '1', 'font': '#f9d12c', 'fundo': '#000000','largura':60,'altura':50},
+    {'operador': '2', 'font': '#f9d12c', 'fundo': '#000000','largura':60,'altura':50},
+    {'operador': '3', 'font': '#f9d12c', 'fundo': '#000000','largura':60,'altura':50},
 
-    {'operador': '+ ', 'font': '#000000', 'fundo': '#f9d12c', 'largura': '50', 'altura': '50'},
+    {'operador': '+ ', 'font': '#000000', 'fundo': '#f9d12c', 'largura': 60, 'altura': 50},
 
-    {'operador': '0', 'font': '#f9d12c', 'fundo': '#000000','largura':'111','altura':'50'},
-    {'operador': '.', 'font': '#f9d12c', 'fundo': '#000000','largura':'50','altura':'50'},
+    {'operador': '0', 'font': '#f9d12c', 'fundo': '#000000','largura':131,'altura':50},
+    {'operador': '.', 'font': '#f9d12c', 'fundo': '#000000','largura':60,'altura':50},
 
-    {'operador': '= ', 'font': '#000000', 'fundo': '#f9d12c', 'largura': '50', 'altura': '50'},
-
+    {'operador': '= ', 'font': '#000000', 'fundo': '#f9d12c', 'largura': 60, 'altura': 50},
 ]
 
 
@@ -57,7 +56,7 @@ borda = border.Border(top=borda_superior, bottom=borda_inferior, left=borda_late
 def pagina(page: ft.Page): #Criar pagina
     page.bgcolor = colors.BLACK
     page.window_resizable = True #Permitir mobilidade
-    page.window_width = 300  # Largura
+    page.window_width = 330  # Largura
     page.window_height = 660  # Altura
     page.title = 'Calculadora Científica'  # Título
     page.window_always_on_top = True  # Janela sempre visível
@@ -88,7 +87,7 @@ def pagina(page: ft.Page): #Criar pagina
     ) for botao in botoes]
 
     keybord = ft.Row(
-        width=250,
+        width=280,
         wrap=True,  # Quebrar linha
         controls=botao,
         alignment='end'
