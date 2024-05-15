@@ -1,5 +1,6 @@
 import flet as ft
 from flet import colors
+from decimal import Decimal
 #Criar um dicionario para facilitar a criação dos botões
 botoes = [
     {'operador':'AC','font':'#ffffff','fundo':'#05c46b'},
@@ -33,29 +34,40 @@ def pagina(page: ft.Page): #Configuração da página
 
     resultados = ft.Text(value='0',color='#000000',size=20) #Definindo o resultado
 
+    #Criando uma função para calculuar os resuldaos
+
+    def calculator(operador,valor_atual):
+        try:
+            value = eval(valor_atual) #Eval faz contas aritmeticas
+
+            if operador == '%': #Calular porcentagem
+                value /= 100
+            elif operador == '±':
+                value = -value #Inverter o sinal
+        except:
+            return 'Error' #Erro ao dividir por 0
+
+        digitos = min(abs(Decimal(value).as_tuple().exponent),5) #Limitar digitos
+        return format(value,f'.{digitos}f') #Formatando com a variavel digitos
     def select(event): #Função para clicar
-        valor_atual = resultados.value if resultados.value != '0' else '' #Verificar se o valor é 0
+        valor_atual = resultados.value if resultados.value not in ('0','Error') else '' #Verificar se o valor é 0
         value = event.control.content.value #Pegando o Valor
         #Verificando qual é o valor e suas propriedades após isso
         if value.isdigit():
             value = valor_atual + value
-        elif value == 'AC':
+        elif value == 'AC':#SE for AC zera
             value = '0'
-        else:
-            if valor_atual and valor_atual[-1] in ('/','*','-','+','.'):
-                valor_atual = valor_atual[-1]
+        else: #Verificar se é um operador
+            if valor_atual and valor_atual[-1] in ('/','*','-','+','.'): #Valor_atual[-1] -> ultimo valor digitado
+                valor_atual = valor_atual[:-1] #Valor_atual[:-1] -> substitui pelo ultimo elemento digitado
 
-            value = valor_atual + value
+            value = valor_atual + value #Atualizando o valor
 
-            if value[-1] in ('=','%','±'): #Verificando se vai afer calcululo
-                value = calculator()
+            if value[-1] in ('=','%','±'): #Verificando se vai aver calcululo
+                value = calculator(operador=value[-1],valor_atual=valor_atual)
 
         resultados.value = value
         resultados.update() #Atualizar
-
-
-
-
 
     display = ft.Row( #Organizar uma linha
         width=250,
@@ -82,9 +94,6 @@ def pagina(page: ft.Page): #Configuração da página
         alignment='end'
     )
     page.add(display,keybord) #Adicionado o resultado
-
-
-
 
 
 ft.app(target=pagina) #Executar
