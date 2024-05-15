@@ -26,7 +26,7 @@ botoes = [
 
 def pagina(page: ft.Page): #Configuração da página
     page.bgcolor = '#f0f0f0' #Cor de fundo
-    page.window_resizable = False #Não permitir que o usuario redimencione a tela
+    page.window_resizable = True #Não permitir que o usuario redimencione a tela
     page.window_width = 280 #Largura
     page.window_height = 380 #Altura
     page.title = 'Calculadora' #Título
@@ -49,6 +49,7 @@ def pagina(page: ft.Page): #Configuração da página
 
         digitos = min(abs(Decimal(value).as_tuple().exponent),5) #Limitar digitos
         return format(value,f'.{digitos}f') #Formatando com a variavel digitos
+
     def select(event): #Função para clicar
         valor_atual = resultados.value if resultados.value not in ('0','Error') else '' #Verificar se o valor é 0
         value = event.control.content.value #Pegando o Valor
