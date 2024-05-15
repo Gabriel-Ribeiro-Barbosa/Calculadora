@@ -34,15 +34,24 @@ def pagina(page: ft.Page): #Configuração da página
     resultados = ft.Text(value='0',color='#000000',size=20) #Definindo o resultado
 
     def select(event): #Função para clicar
-        valor_atual = resultados.value if resultados.value != 0 else '' #Verificar se o valor é 0
-        valor = event.content.value #Pegando o Valor
+        valor_atual = resultados.value if resultados.value != '0' else '' #Verificar se o valor é 0
+        value = event.control.content.value #Pegando o Valor
         #Verificando qual é o valor e suas propriedades após isso
-        if valor.isdigit():
-            valor = valor_atual + valor
-        elif valor == 'AC':
-            valor = '0'
+        if value.isdigit():
+            value = valor_atual + value
+        elif value == 'AC':
+            value = '0'
         else:
-            if valor_atual and valor_atual[-1] in
+            if valor_atual and valor_atual[-1] in ('/','*','-','+','.'):
+                valor_atual = valor_atual[-1]
+
+            value = valor_atual + value
+
+            if value[-1] in ('=','%','±'): #Verificando se vai afer calcululo
+                value = calculator()
+
+        resultados.value = value
+        resultados.update() #Atualizar
 
 
 
