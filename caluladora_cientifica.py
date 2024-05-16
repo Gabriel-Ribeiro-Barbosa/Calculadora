@@ -48,9 +48,9 @@ botoes = [
 
 
 #Adicionar borda:
-borda_superior = border.BorderSide(1, 'white')  # Borda superior preta de 1 pixel
-borda_inferior = border.BorderSide(1, 'white')  # Borda inferior preta de 1 pixel
-borda_lateral = border.BorderSide(1, 'white')   # Borda lateral preta de 1 pixel
+borda_superior = border.BorderSide(1, 'white')  # Borda superior branca de 1 pixel
+borda_inferior = border.BorderSide(1, 'white')  # Borda inferior branca de 1 pixel
+borda_lateral = border.BorderSide(1, 'white')   # Borda lateral branca de 1 pixel
 
 # Instância para borda
 borda = border.Border(top=borda_superior, bottom=borda_inferior, left=borda_lateral, right=borda_lateral)
@@ -71,12 +71,14 @@ def pagina(page: ft.Page): #Criar pagina
         value = eval(valor_atual)
 
         if operador == '%':
-            value /= 100
+            value = value/100
         elif operador == 'tan':
             value = math.tan(value)
         elif operador == 'sin':
             value = math.sin(value)
 
+        digitos = min(abs(Decimal(value).as_tuple().exponent), 5)  # Limitar digitos
+        return format(value, f'.{digitos}f')  # Formatando com a variavel digitos
 
 
     def select(event): #Função para clicar
