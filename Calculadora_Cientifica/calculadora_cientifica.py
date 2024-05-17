@@ -86,11 +86,11 @@ def pagina(page: ft.Page): #Criar pagina
 
     def calcular(ex):
         try:
-            result = avaliar_ex(ex)
+            result = avaliar_ex(ex) #Chamando função de avaliar expressão
             if isinstance(result, float):
                 digitos = min(abs(Decimal(result).as_tuple().exponent), 5)
-                return format(result, f'.{digitos}f')
-            return str(result)
+                return format(result, f'.{digitos}f') # Formatar com 5 casas decimais
+            return str(result) # Se o resultado não for um 'float', converte o resultado para string e retorna
         except:
             return 'Error'
 
@@ -127,13 +127,13 @@ def pagina(page: ft.Page): #Criar pagina
 
     #Criando os botoes
     botao = [ft.Container(
-        content=ft.Text(value=botao['operador'], color=botao['font']),
+        content=ft.Text(value=botao['operador'], color=botao['font']), #Referencia ao dicionario criado
         width= botao['largura'],
         height= botao['altura'],
         bgcolor=botao['fundo'],
         border_radius=10, #Aredondar
         border= borda,  # Borda
-        alignment=ft.alignment.center,
+        alignment=ft.alignment.center, # Alinhar
         on_click=select  # Chamar função select
     )for botao in botoes]
 
