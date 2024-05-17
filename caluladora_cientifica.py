@@ -5,7 +5,7 @@ from decimal import Decimal
 import math
 #Definir botoes
 botoes = [
-    {'operador':'tan','font':'#ffffff','fundo':'#575a5e','largura':60,'altura':50},
+    {'operador': 'tan','font':'#ffffff','fundo':'#575a5e','largura':60,'altura':50},
     {'operador': 'sin', 'font': '#ffffff', 'fundo': '#575a5e','largura':60,'altura':50},
     {'operador': 'cos', 'font': '#ffffff', 'fundo': '#575a5e','largura':60,'altura':50},
     {'operador': 'sqrt', 'font': '#ffffff', 'fundo': '#575a5e','largura':60,'altura':50},
@@ -66,37 +66,51 @@ def pagina(page: ft.Page): #Criar pagina
 
     resultados = ft.Text(value='0',color=colors.WHITE,size=20) #Definindo o resultado
 
+    def avaliar_ex(expr):
+        try:
+            result = eval(expr, {"__builtins__": None},{ #__builtins é um dicionario interno que suporta funcoes e operacoes
+                'tan': math.tan, #Tangente
+                'sin': math.sin, #Seno
+                'cos': math.cos, #Cosseno
+                'sqrt': math.sqrt, #Raiz Quadrada
+                'log': math.log, #Logaritimo
+                'log10': math.log10, #Logaritimo de 10
+                'pi': math.pi, #PI
+                'e': math.e, #Constante e
+                'pow': math.pow, #Potencia
+                'rad': math.radians #Radianos
+            })
+            return result
+        except:
+            return 'Error'
 
-    def calcular(operador,valor_atual):
-        value = eval(valor_atual)
-
-        if operador == '%':
-            value = value/100
-        elif operador == 'tan':
-            value = math.tan(value)
-        elif operador == 'sin':
-            value = math.sin(value)
-
-        digitos = min(abs(Decimal(value).as_tuple().exponent), 5)  # Limitar digitos
-        return format(value, f'.{digitos}f')  # Formatando com a variavel digitos
+    def calcular(ex):
+        try:
+            result = avaliar_ex(ex)
+            if isinstance(result, float):
+                digitos = min(abs(Decimal(result).as_tuple().exponent), 5)
+                return format(result, f'.{digitos}f')
+            return str(result)
+        except:
+            return 'Error'
 
 
     def select(event): #Função para clicar
         valor_atual = resultados.value if resultados.value not in ('0','Error') else '' #Verificar se o valor é 0
         value = event.control.content.value #Pegando o Valor
         #Verificando qual é o valor e suas propriedades após isso
-        if value.isdigit():
+        if value.isdigit() or value == '.':
             value = valor_atual + value
         elif value == 'AC':#Se for AC zera
             value = '0'
-        else: #Verificar se é um operador
-            if valor_atual and valor_atual[-1] in ('/','*','-','+','.'): #Valor_atual[-1] -> ultimo valor digitado
-                valor_atual = valor_atual[:-1] #Valor_atual[:-1] -> substitui pelo ultimo elemento digitado
-
+        elif value == '%':  # Se for porcentagem
+            if '%' in valor_atual:  # Verificar se a porcentagem já foi aplicada
+                return
+            value = str(float(valor_atual) / 100)  # Converter para porcentagem
+        elif value == '=':
+            value = calcular(valor_atual) #Se for = significa que é para ativar os operadores
+        else:
             value = valor_atual + value #Atualizando o valor
-
-            if value[-1] in ('=','%','tan','sen','cos','sqrt','log','log10','e','pow','rad','pi','(',')'):#Verificando se vai aver calcululo
-                value = calcular(operador=value[-1],valor_atual=valor_atual)
 
         resultados.value = value
         resultados.update() #Atualizar
