@@ -4,7 +4,7 @@ from decimal import Decimal
 #Criar um dicionario para facilitar a criação dos botões
 botoes = [
     {'operador':'AC','font':'#ffffff','fundo':'#05c46b'},
-    {'operador': '± ', 'font': '#ffffff', 'fundo': '#05c46b'},
+    {'operador': '±', 'font': '#ffffff', 'fundo': '#05c46b'},
     {'operador': '%', 'font': '#ffffff', 'fundo': '#05c46b'},
     {'operador': '/', 'font': '#ffffff', 'fundo': '#c40556'},
     {'operador': '7', 'font': '#000000', 'fundo': '#ffa500'},
@@ -29,7 +29,7 @@ def pagina(page: ft.Page): #Configuração da página
     page.window_resizable = True #Não permitir que o usuario redimencione a tela
     page.window_width = 280 #Largura
     page.window_height = 380 #Altura
-    page.title = 'Calculadora' #Título
+    page.title = 'Calculadora Aritimética' #Título
     page.window_always_on_top = True #Janela sempre visível
 
     resultados = ft.Text(value='0',color='#000000',size=20) #Definindo o resultado
@@ -42,8 +42,8 @@ def pagina(page: ft.Page): #Configuração da página
 
             if operador == '%': #Calular porcentagem
                 value /= 100
-            elif operador == '±':
-                value = -value #Inverter o sinal
+            if operador == '±':#Inverter valor
+                value = -value
         except:
             return 'Error' #Erro ao dividir por 0
 
